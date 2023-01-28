@@ -60,7 +60,7 @@ struct ParameterKey {
 struct ValidationRegex {
     static let formate = "SELF MATCHES %@"
     static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9._]+\\.[A-Za-z]{2,}"
-    static let password = "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}"
+    static let password = "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*?[#?!@$%^&*-]).{8,}"
     static let phone = "^[0-9]{11}$"
 }
 
@@ -97,7 +97,7 @@ struct Alerts {
     static let sorryTitle = "Sorry"
     static let successTitle = "Success"
     static let validEmail = " Please enter valid email \n Example tolba@gmail.com"
-    static let validPassword = "Please enter valid password \n contains at least one upper character \n contains at least one small character \n contain at least one number \n At least total 8 character"
+    static let validPassword = "Please enter valid password. that must contain minimum 8 characters, at least \n - one uppercase letter \n - one lowercase letter \n - one number \n - one special character"
     static let noName = "Please enter your name"
     static let noEmail = "Please enter your email"
     static let noPassword = "Please enter your password"
