@@ -23,16 +23,19 @@ class UserFireBaseManager {
         }
     }
     
+    //MARK:- signInFB
     func signInFB(email: String, password: String, completion: @escaping ((Error?) -> Void)) {
         signIn(email: email, password: password) { error in
             completion(error)
         }
     }
     
+    //MARK:- getCurrentUserID
     func getCurrentUserID() -> String? {
         Auth.auth().currentUser?.uid
     }
     
+    //MARK:- getCurrentUserName
     func getCurrentUserName() -> String? {
         Auth.auth().currentUser?.displayName
     }

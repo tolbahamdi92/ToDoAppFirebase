@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo: Codable {
+public struct Todo {
     var date: Date
     var content: String
 }

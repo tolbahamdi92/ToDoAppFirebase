@@ -5,11 +5,17 @@
 //  Created by Tolba on 23/06/1444 AH.
 //
 
-import Foundation
+import UIKit
 
 //  MARK:- StoryBoard
 struct StoryBoard {
     static let main = "Main"
+}
+
+//MARK:- Colors
+struct Colors {
+    static let grayColor = UIColor.lightGray
+    static let purpleColor = UIColor(red: 0.278, green: 0.078, blue: 0.396, alpha: 1.0)
 }
 
 //  MARK:- ViewController
@@ -17,6 +23,8 @@ struct ViewController {
     static let signUpVC = "SignUpVC"
     static let signInVC = "SignInVC"
     static let toDoListsVC = "ToDoListsVC"
+    static let addToDoVC = "AddToDoVC"
+    
 }
 
 //  MARK:- ViewControllerTitle
@@ -26,23 +34,38 @@ struct ViewControllerTitle {
     
 }
 
-// MARK:- Cells
-struct  Cells {
-}
-
-// MARK:- ButtonsTitle
+//MARK:- ButtonsTitle
 struct ButtonsTitle {
     static let signUp = "Sign Up"
     static let saveData = "Save Data"
     static let logOut = "Log out"
     static let profile = "Profile"
     static let ok = "OK"
+    static let cancel = "Cancel"
+    static let done = "Done"
 }
 
-// MARK:- UserDefaultsKeys
+//MARK:- UserDefaultsKeys
 struct UserDefaultsKeys {
     static let isLoggedIn = "isLoggedIn"
     static let email = "email"
+}
+
+//MARK:- ToDoKeys
+struct ToDoKeys {
+    static let date = "date"
+    static let content = "content"
+}
+
+// MARK:- FireBase
+struct FireBase {
+    static let toDosColl = "toDos"
+    static let toDosUser = "toDosUser"
+}
+
+//MARK:- Cells
+struct Cells {
+    static let toDoCell = "ToDoCell"
 }
 
 // MARK:- URLs
@@ -90,6 +113,9 @@ struct PlaceholderText {
     static let userName = "User Name"
     static let userEmail = "Email"
     static let userPassword = "Password"
+    
+    static let dateAndTime = "DateAndTime"
+    static let content = "Content"
 }
 
 // MARK:- Alerts
@@ -104,5 +130,10 @@ struct Alerts {
     static let dataLoginWrong = "email or password is wrong"
     static let tryAgain = "Possibly something is wrong try again"
     static let saveSuccess = "Data saved successfully"
+    static let signUpSuccess = "Sign Up successfully"
+    static let signInSuccess = "Sign In successfully"
     static let userFound = "account already found"
+    
+    static let noTime = "Please determine todo time"
+    static let noContent = "Please enter content of ToDo"
 }

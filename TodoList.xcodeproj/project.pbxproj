@@ -16,8 +16,13 @@
 		7E1C4D52297DB9D90014C273 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C4D51297DB9D90014C273 /* Todo.swift */; };
 		7E6A772C2982F07C0075D58A /* UITextField + addBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6A772B2982F07C0075D58A /* UITextField + addBottomBorder.swift */; };
 		7E721CA9297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E721CA8297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift */; };
+		7E792B7C2989623700C9098D /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E792B7A2989623700C9098D /* ToDoCell.swift */; };
+		7E792B7D2989623700C9098D /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E792B7B2989623700C9098D /* ToDoCell.xib */; };
 		7E7F3EFE297EE95000AC706E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E7F3EFD297EE95000AC706E /* GoogleService-Info.plist */; };
+		7E89A64D29882C8B003B630E /* ToDoFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */; };
+		7E89A64F29883C00003B630E /* UIView + ShowIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89A64E29883C00003B630E /* UIView + ShowIndicator.swift */; };
 		7E93127F298594EC00A5538C /* ToDoListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E93127E298594EC00A5538C /* ToDoListsVC.swift */; };
+		7E9312812985A96D00A5538C /* AddToDoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9312802985A96D00A5538C /* AddToDoVC.swift */; };
 		7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */; };
 		7EEE56D52984322800519ABC /* ValidtionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D42984322800519ABC /* ValidtionDataManager.swift */; };
 		7EEE56D729843B9000519ABC /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */; };
@@ -36,8 +41,13 @@
 		7E1C4D51297DB9D90014C273 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		7E6A772B2982F07C0075D58A /* UITextField + addBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + addBottomBorder.swift"; sourceTree = "<group>"; };
 		7E721CA8297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + BackgroundStatusBar.swift"; sourceTree = "<group>"; };
+		7E792B7A2989623700C9098D /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		7E792B7B2989623700C9098D /* ToDoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		7E7F3EFD297EE95000AC706E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFirebaseManager.swift; sourceTree = "<group>"; };
+		7E89A64E29883C00003B630E /* UIView + ShowIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ShowIndicator.swift"; sourceTree = "<group>"; };
 		7E93127E298594EC00A5538C /* ToDoListsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListsVC.swift; sourceTree = "<group>"; };
+		7E9312802985A96D00A5538C /* AddToDoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoVC.swift; sourceTree = "<group>"; };
 		7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFireBaseManager.swift; sourceTree = "<group>"; };
 		7EEE56D42984322800519ABC /* ValidtionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidtionDataManager.swift; sourceTree = "<group>"; };
 		7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 				7E1C4D36297DB46E0014C273 /* SignUpVC.swift */,
 				7EEE56DA298447FD00519ABC /* SignInVC.swift */,
 				7E93127E298594EC00A5538C /* ToDoListsVC.swift */,
+				7E9312802985A96D00A5538C /* AddToDoVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +161,8 @@
 		7E1C4D4B297DB7CD0014C273 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E792B7A2989623700C9098D /* ToDoCell.swift */,
+				7E792B7B2989623700C9098D /* ToDoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +180,7 @@
 			children = (
 				7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */,
 				7EEE56D42984322800519ABC /* ValidtionDataManager.swift */,
+				7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -182,6 +196,7 @@
 		7E721CA7297F11AA00F44D06 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7E89A64E29883C00003B630E /* UIView + ShowIndicator.swift */,
 				7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */,
 				7E721CA8297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift */,
 				7E6A772B2982F07C0075D58A /* UITextField + addBottomBorder.swift */,
@@ -259,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E1C4D3F297DB4700014C273 /* LaunchScreen.storyboard in Resources */,
+				7E792B7D2989623700C9098D /* ToDoCell.xib in Resources */,
 				7E7F3EFE297EE95000AC706E /* GoogleService-Info.plist in Resources */,
 				7E1C4D3C297DB4700014C273 /* Assets.xcassets in Resources */,
 				7E1C4D3A297DB46E0014C273 /* Main.storyboard in Resources */,
@@ -315,11 +331,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E1C4D37297DB46E0014C273 /* SignUpVC.swift in Sources */,
+				7E89A64F29883C00003B630E /* UIView + ShowIndicator.swift in Sources */,
 				7E93127F298594EC00A5538C /* ToDoListsVC.swift in Sources */,
 				7EEE56D729843B9000519ABC /* UIViewController + Alert.swift in Sources */,
+				7E792B7C2989623700C9098D /* ToDoCell.swift in Sources */,
 				7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */,
 				7E721CA9297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift in Sources */,
+				7E89A64D29882C8B003B630E /* ToDoFirebaseManager.swift in Sources */,
 				7EEE56DB298447FD00519ABC /* SignInVC.swift in Sources */,
+				7E9312812985A96D00A5538C /* AddToDoVC.swift in Sources */,
 				7E1C4D33297DB46E0014C273 /* AppDelegate.swift in Sources */,
 				7EEE56D52984322800519ABC /* ValidtionDataManager.swift in Sources */,
 				7E6A772C2982F07C0075D58A /* UITextField + addBottomBorder.swift in Sources */,

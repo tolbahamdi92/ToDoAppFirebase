@@ -17,10 +17,6 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     
-    //MARK:- Properties
-    let grayColor: CGColor = UIColor.lightGray.cgColor
-    let purpleColor: CGColor = UIColor(red: 0.278, green: 0.078, blue: 0.396, alpha: 1.0).cgColor
-    
     //MARK:- View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +69,7 @@ extension SignUpVC {
         if sender.text == "" {
             sender.placeholder = sender.isEditing ? "" : placeholder
             label.text = sender.isEditing ? placeholder : ""
-            sender.addBottomBorder(height: sender.isEditing ? 2 : 1, color: sender.isEditing ? purpleColor : grayColor)
+            sender.addBottomBorder(height: sender.isEditing ? 2 : 1, color: sender.isEditing ? Colors.purpleColor.cgColor : Colors.grayColor.cgColor)
         }
     }
     
@@ -107,12 +103,13 @@ extension SignUpVC {
     
     private func signUpBtnActionTapped() {
         if isEnteredData() && isValidData() {
+            self.view.showLoader()
             UserFireBaseManager.shared.saveUserInFB(name: nameTF.text!, email: emailTF.text!, password: passwordTF.text!) { error in
+                self.view.hideLoader()
                 if error != nil {
                     self.showAlert(title: Alerts.sorryTitle, message: error!.localizedDescription)
                 } else {
-                    
-                    self.showAlert(title: Alerts.successTitle, message: Alerts.saveSuccess) { _ in
+                    self.showAlert(title: Alerts.successTitle, message: Alerts.signUpSuccess) { _ in
                         self.gotoToDoListsVC()
                     }
                 }
