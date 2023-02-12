@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class SignUpVC: UIViewController {
 
+    //MARK:- Property
+    private var cancelables = Set<AnyCancellable>()
+    
     //MARK:- IBOutlet
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTF: UITextField!
@@ -104,16 +108,18 @@ extension SignUpVC {
     private func signUpBtnActionTapped() {
         if isEnteredData() && isValidData() {
             self.view.showLoader()
-            UserFireBaseManager.shared.saveUserInFB(name: nameTF.text!, email: emailTF.text!, password: passwordTF.text!) { error in
-                self.view.hideLoader()
-                if error != nil {
-                    self.showAlert(title: Alerts.sorryTitle, message: error!.localizedDescription)
-                } else {
+            UserManager.shared.signUp(name: nameTF.text!, email: emailTF.text!, password: passwordTF.text!)
+                .sink { [weak self] error in
+                    guard let self else {return}
+                    self.view.hideLoader()
+                    if case let .failure(error) = error {
+                        self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
+                    }
                     self.showAlert(title: Alerts.successTitle, message: Alerts.signUpSuccess) { _ in
                         self.gotoToDoListsVC()
                     }
-                }
-            }
+                } receiveValue: { _ in }
+                .store(in: &cancelables)
         }
     }
     

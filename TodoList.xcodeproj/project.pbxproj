@@ -23,6 +23,7 @@
 		7E89A64F29883C00003B630E /* UIView + ShowIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89A64E29883C00003B630E /* UIView + ShowIndicator.swift */; };
 		7E93127F298594EC00A5538C /* ToDoListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E93127E298594EC00A5538C /* ToDoListsVC.swift */; };
 		7E9312812985A96D00A5538C /* AddToDoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9312802985A96D00A5538C /* AddToDoVC.swift */; };
+		7EEAA2162999173600C29F8E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEAA2152999173600C29F8E /* UserManager.swift */; };
 		7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */; };
 		7EEE56D52984322800519ABC /* ValidtionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D42984322800519ABC /* ValidtionDataManager.swift */; };
 		7EEE56D729843B9000519ABC /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */; };
@@ -48,6 +49,7 @@
 		7E89A64E29883C00003B630E /* UIView + ShowIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ShowIndicator.swift"; sourceTree = "<group>"; };
 		7E93127E298594EC00A5538C /* ToDoListsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListsVC.swift; sourceTree = "<group>"; };
 		7E9312802985A96D00A5538C /* AddToDoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoVC.swift; sourceTree = "<group>"; };
+		7EEAA2152999173600C29F8E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFireBaseManager.swift; sourceTree = "<group>"; };
 		7EEE56D42984322800519ABC /* ValidtionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidtionDataManager.swift; sourceTree = "<group>"; };
 		7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		7E1C4D4D297DB7E60014C273 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				7EEAA2142999170A00C29F8E /* Combine */,
 				7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */,
 				7EEE56D42984322800519ABC /* ValidtionDataManager.swift */,
 				7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */,
@@ -202,6 +205,14 @@
 				7E6A772B2982F07C0075D58A /* UITextField + addBottomBorder.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7EEAA2142999170A00C29F8E /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				7EEAA2152999173600C29F8E /* UserManager.swift */,
+			);
+			path = Combine;
 			sourceTree = "<group>";
 		};
 		AF5201F3BFB9CEA684C15B41 /* Pods */ = {
@@ -336,6 +347,7 @@
 				7EEE56D729843B9000519ABC /* UIViewController + Alert.swift in Sources */,
 				7E792B7C2989623700C9098D /* ToDoCell.swift in Sources */,
 				7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */,
+				7EEAA2162999173600C29F8E /* UserManager.swift in Sources */,
 				7E721CA9297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift in Sources */,
 				7E89A64D29882C8B003B630E /* ToDoFirebaseManager.swift in Sources */,
 				7EEE56DB298447FD00519ABC /* SignInVC.swift in Sources */,

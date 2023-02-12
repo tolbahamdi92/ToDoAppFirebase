@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class SignInVC: UIViewController {
-
-    //MARK:- IBOutlet
     
+    //MARK:- Property
+    private var cancelables = Set<AnyCancellable>()
+    
+    //MARK:- IBOutlet
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -23,7 +26,7 @@ class SignInVC: UIViewController {
         setupTextFieldUI()
         statusBarColorChange()
     }
-
+    
     //MARK:- IBAction
     @IBAction func endEditingEmailTF(_ sender: UITextField) {
         handleEditingTF(sender: sender, label: emailLabel, placeholder: PlaceholderText.userEmail)
@@ -95,17 +98,18 @@ extension SignInVC {
     private func signInBtnActionTapped() {
         if isEnteredData() && isValidData() {
             self.view.showLoader()
-            UserFireBaseManager.shared.signInFB(email: emailTF.text!, password: passwordTF.text!) { error in
-                self.view.hideLoader()
-                if error != nil {
-                    self.showAlert(title: Alerts.sorryTitle, message: error!.localizedDescription)
-                } else {
-                    
+            UserManager.shared.signIn(email: emailTF.text!, password: passwordTF.text!)
+                .sink { [weak self] error in
+                    guard let self else {return}
+                    self.view.hideLoader()
+                    if case let .failure(error) = error {
+                        self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
+                    }
                     self.showAlert(title: Alerts.successTitle, message: Alerts.signInSuccess) { _ in
                         self.gotoToDoListsVC()
                     }
-                }
-            }
+                } receiveValue: { _ in }
+                .store(in: &cancelables)
         }
     }
     
