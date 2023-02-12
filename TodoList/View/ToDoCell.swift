@@ -6,11 +6,12 @@
 //
 
 import UIKit
-
+import Combine
+/*
 protocol RemoveTodo {
     func removeTodo(with index: Int)
 }
-
+*/
 class ToDoCell: UITableViewCell {
     
     //MARK:- IBOutlet
@@ -19,11 +20,13 @@ class ToDoCell: UITableViewCell {
     @IBOutlet weak var deleteBtnOutlet: UIButton!
     
     //MARK:- Properities
-    var delegate: RemoveTodo?
+    //var delegate: RemoveTodo?
+    let deleteTodo = PassthroughSubject<Int, Never>()
     
     //MARK:- IBAction
     @IBAction func deleteBtnTapped(_ sender: UIButton) {
-        delegate?.removeTodo(with: sender.tag)
+        //delegate?.removeTodo(with: sender.tag)
+        deleteTodo.send(sender.tag)
     }
     
     //MARK:- configureCell Function

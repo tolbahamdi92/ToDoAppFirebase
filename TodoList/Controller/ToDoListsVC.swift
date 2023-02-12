@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ToDoListsVC: UIViewController {
 
@@ -15,6 +16,7 @@ class ToDoListsVC: UIViewController {
     
     //MARK:- Properties
     var todosArr: [Todo] = []
+    var subscriptions = Set<AnyCancellable>()
 
     //MARK:- View Controller Life Cycle
     override func viewDidLoad() {
@@ -58,6 +60,10 @@ extension ToDoListsVC {
         }
     }
     
+    private func removeTodo(with index: Int) {
+        ToDoFirebaseManager.shared.removeTodo(todosArr[index])
+    }
+    
     @objc private func backBtnTapped(){
         self.navigationController?.popViewController(animated: true)
         
@@ -83,7 +89,12 @@ extension ToDoListsVC: UITableViewDataSource {
         }
         cell.configureCell(todo: todosArr[indexPath.row])
         cell.deleteBtnOutlet.tag = indexPath.row
-        cell.delegate = self
+        cell.deleteTodo
+            .handleEvents(receiveOutput: { [unowned self] newItem in
+                self.removeTodo(with: indexPath.row)
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
         return cell
     }
 }
@@ -94,11 +105,11 @@ extension ToDoListsVC: UITableViewDelegate {
     
 }
 
+/*
 //Mark:- RemoveTodoDelegate
 extension ToDoListsVC: RemoveTodo {
     func removeTodo(with index: Int) {
         ToDoFirebaseManager.shared.removeTodo(todosArr[index])
     }
-    
-    
 }
+*/
