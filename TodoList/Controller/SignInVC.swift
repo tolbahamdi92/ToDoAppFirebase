@@ -10,14 +10,14 @@ import Combine
 
 class SignInVC: UIViewController {
     
-    //MARK:- Property
-    private var cancelables = Set<AnyCancellable>()
-    
     //MARK:- IBOutlet
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
+    
+    //MARK:- Properties
+    private var cancelables = Set<AnyCancellable>()
     
     //MARK:- View Controller Life Cycle
     override func viewDidLoad() {

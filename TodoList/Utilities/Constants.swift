@@ -106,6 +106,7 @@ struct SQL {
 struct PlaceholderImage {
     static let user = "user"
     static let search = "search"
+    static let backArow = "backArrow"
 }
 
 // MARK:- PlaceholderText

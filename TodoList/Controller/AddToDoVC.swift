@@ -7,11 +7,13 @@
 
 import UIKit
 import FirebaseFirestore
+import Combine
 
 class AddToDoVC: UIViewController {
 
     //MARK:- Properties
     private let datePicker: UIDatePicker = UIDatePicker()
+    private var cancelables = Set<AnyCancellable>()
     
     //MARK:- IBOutlet
     @IBOutlet weak var dateAndTimeLabel: UILabel!
@@ -105,17 +107,19 @@ extension AddToDoVC {
         if isEnteredData()  {
             self.view.showLoader()
             self.saveBtnOutlet.isEnabled = false
-            ToDoFirebaseManager.shared.saveToDo(time: dateAndTimeTF.text!, content: contentTF.text!) { error in
-                self.view.hideLoader()
-                self.saveBtnOutlet.isEnabled = true
-                if let error = error {
-                    self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
-                } else {
+            ToDoManager.shared.saveToDo(time: dateAndTimeTF.text!, content: contentTF.text!)
+                .sink { [weak self] error in
+                    guard let self else {return}
+                    self.view.hideLoader()
+                    self.saveBtnOutlet.isEnabled = true
+                    if case let .failure(error) = error {
+                        self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
+                    }
                     self.showAlert(title: Alerts.successTitle, message: Alerts.saveSuccess) { _ in
                         self.gotoToDoListVC()
                     }
-                }
-            }
+                } receiveValue: { _ in }
+                .store(in: &cancelables)
         }
     }
     

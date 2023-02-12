@@ -10,9 +10,6 @@ import Combine
 
 class SignUpVC: UIViewController {
 
-    //MARK:- Property
-    private var cancelables = Set<AnyCancellable>()
-    
     //MARK:- IBOutlet
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTF: UITextField!
@@ -20,6 +17,9 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
+    
+    //MARK:- Properties
+    private var cancelables = Set<AnyCancellable>()
     
     //MARK:- View Controller Life Cycle
     override func viewDidLoad() {

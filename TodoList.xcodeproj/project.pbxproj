@@ -24,6 +24,7 @@
 		7E93127F298594EC00A5538C /* ToDoListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E93127E298594EC00A5538C /* ToDoListsVC.swift */; };
 		7E9312812985A96D00A5538C /* AddToDoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9312802985A96D00A5538C /* AddToDoVC.swift */; };
 		7EEAA2162999173600C29F8E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEAA2152999173600C29F8E /* UserManager.swift */; };
+		7EEAA21A2999840800C29F8E /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEAA2192999840800C29F8E /* TodoManager.swift */; };
 		7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */; };
 		7EEE56D52984322800519ABC /* ValidtionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D42984322800519ABC /* ValidtionDataManager.swift */; };
 		7EEE56D729843B9000519ABC /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */; };
@@ -50,6 +51,7 @@
 		7E93127E298594EC00A5538C /* ToDoListsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListsVC.swift; sourceTree = "<group>"; };
 		7E9312802985A96D00A5538C /* AddToDoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoVC.swift; sourceTree = "<group>"; };
 		7EEAA2152999173600C29F8E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		7EEAA2192999840800C29F8E /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
 		7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFireBaseManager.swift; sourceTree = "<group>"; };
 		7EEE56D42984322800519ABC /* ValidtionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidtionDataManager.swift; sourceTree = "<group>"; };
 		7EEE56D629843B9000519ABC /* UIViewController + Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1C4D46297DB7640014C273 /* Shared */,
+				7EEAA2172999825E00C29F8E /* Networking */,
 				7E1C4D4D297DB7E60014C273 /* Manager */,
 				7E1C4D4C297DB7DC0014C273 /* Model */,
 				7E1C4D4B297DB7CD0014C273 /* View */,
@@ -180,10 +183,7 @@
 		7E1C4D4D297DB7E60014C273 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				7EEAA2142999170A00C29F8E /* Combine */,
-				7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */,
 				7EEE56D42984322800519ABC /* ValidtionDataManager.swift */,
-				7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -211,8 +211,27 @@
 			isa = PBXGroup;
 			children = (
 				7EEAA2152999173600C29F8E /* UserManager.swift */,
+				7EEAA2192999840800C29F8E /* TodoManager.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		7EEAA2172999825E00C29F8E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7EEAA2142999170A00C29F8E /* Combine */,
+				7EEAA218299982B400C29F8E /* WithCompletion */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7EEAA218299982B400C29F8E /* WithCompletion */ = {
+			isa = PBXGroup;
+			children = (
+				7EEE56D2298431C100519ABC /* UserFireBaseManager.swift */,
+				7E89A64C29882C8B003B630E /* ToDoFirebaseManager.swift */,
+			);
+			path = WithCompletion;
 			sourceTree = "<group>";
 		};
 		AF5201F3BFB9CEA684C15B41 /* Pods */ = {
@@ -349,6 +368,7 @@
 				7EEE56D3298431C100519ABC /* UserFireBaseManager.swift in Sources */,
 				7EEAA2162999173600C29F8E /* UserManager.swift in Sources */,
 				7E721CA9297F11E900F44D06 /* UIViewController + BackgroundStatusBar.swift in Sources */,
+				7EEAA21A2999840800C29F8E /* TodoManager.swift in Sources */,
 				7E89A64D29882C8B003B630E /* ToDoFirebaseManager.swift in Sources */,
 				7EEE56DB298447FD00519ABC /* SignInVC.swift in Sources */,
 				7E9312812985A96D00A5538C /* AddToDoVC.swift in Sources */,

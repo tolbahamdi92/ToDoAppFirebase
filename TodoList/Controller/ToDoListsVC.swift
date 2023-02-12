@@ -16,7 +16,7 @@ class ToDoListsVC: UIViewController {
     
     //MARK:- Properties
     var todosArr: [Todo] = []
-    var subscriptions = Set<AnyCancellable>()
+    var cancelables = Set<AnyCancellable>()
 
     //MARK:- View Controller Life Cycle
     override func viewDidLoad() {
@@ -32,8 +32,8 @@ extension ToDoListsVC {
     private func setupNavBar() {
         self.navigationController?.navigationBar.backgroundColor = Colors.purpleColor
         self.navigationItem.hidesBackButton = true
-        self .title = UserFireBaseManager.shared.getCurrentUserName()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow") , style: .plain, target: self, action:  #selector(backBtnTapped))
+        self .title = UserManager.shared.getCurrentUserName()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: PlaceholderImage.backArow) , style: .plain, target: self, action:  #selector(backBtnTapped))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addToDoBtnTapped))
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 25, weight: .medium), .foregroundColor : UIColor.white], for: .normal)
     }
@@ -41,27 +41,32 @@ extension ToDoListsVC {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.separatorColor = purpleColor
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "ToDoCell", bundle: nil), forCellReuseIdentifier: Cells.toDoCell)
+        tableView.register(UINib(nibName: Cells.toDoCell, bundle: nil), forCellReuseIdentifier: Cells.toDoCell)
     }
     private func getTodosList() {
         self.view.showLoader()
-        ToDoFirebaseManager.shared.getToDos { (error, result) in
-            self.view.hideLoader()
-            if let error = error {
-                self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
-            } else {
-                if let result = result {
-                    self.todosArr = result
+        ToDoManager.shared.getToDos()
+            .sink { [weak self] error in
+                guard let self else {return}
+                self.view.hideLoader()
+                if case let .failure(error) = error {
+                    self.showAlert(title: Alerts.sorryTitle, message: error.localizedDescription)
+                }
+            } receiveValue: { todosList in
+                self.view.hideLoader()
+                if let todosList {
+                    self.todosArr = todosList.sorted {
+                        $0.date > $1.date
+                    }
                     self.tableView.reloadData()
                 }
             }
-        }
+            .store(in: &cancelables)
     }
     
     private func removeTodo(with index: Int) {
-        ToDoFirebaseManager.shared.removeTodo(todosArr[index])
+        ToDoManager.shared.removeTodo(todosArr[index])
     }
     
     @objc private func backBtnTapped(){
@@ -90,26 +95,15 @@ extension ToDoListsVC: UITableViewDataSource {
         cell.configureCell(todo: todosArr[indexPath.row])
         cell.deleteBtnOutlet.tag = indexPath.row
         cell.deleteTodo
-            .handleEvents(receiveOutput: { [unowned self] newItem in
-                self.removeTodo(with: indexPath.row)
+            .handleEvents(receiveOutput: { [unowned self] index in
+                self.removeTodo(with: index)
             })
             .sink { _ in }
-            .store(in: &subscriptions)
+            .store(in: &cancelables)
         return cell
     }
 }
 
 //MARK:- TableViewDelegate
 extension ToDoListsVC: UITableViewDelegate {
-    
-    
 }
-
-/*
-//Mark:- RemoveTodoDelegate
-extension ToDoListsVC: RemoveTodo {
-    func removeTodo(with index: Int) {
-        ToDoFirebaseManager.shared.removeTodo(todosArr[index])
-    }
-}
-*/

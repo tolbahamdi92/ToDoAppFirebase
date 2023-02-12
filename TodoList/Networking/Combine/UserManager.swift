@@ -32,17 +32,28 @@ struct UserManager {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error {
                 subject.send(completion: .failure(error))
-            }
-            let changeRequest = result!.user.createProfileChangeRequest()
-            changeRequest.displayName = name
-            changeRequest.commitChanges { error in
-                if let error {
-                    subject.send(completion: .failure(error))
+            } else {
+                let changeRequest = result!.user.createProfileChangeRequest()
+                changeRequest.displayName = name
+                changeRequest.commitChanges { error in
+                    if let error {
+                        subject.send(completion: .failure(error))
+                    }
                 }
-            }
                 subject.send(completion: .finished)
+            }
         }
         return subject.handleEvents().eraseToAnyPublisher()
+    }
+    
+    //MARK:- getCurrentUserID
+    func getCurrentUserID() -> String? {
+        Auth.auth().currentUser?.uid
+    }
+    
+    //MARK:- getCurrentUserName
+    func getCurrentUserName() -> String? {
+        Auth.auth().currentUser?.displayName
     }
     
 }
